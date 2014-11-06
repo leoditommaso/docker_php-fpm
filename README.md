@@ -18,7 +18,7 @@ no application configured and with no connection to a webserver. So, the
 best way to run the container is:
 
 ```
-docker run -d -v /PATH/TO/LOGDIR:/var/log/phpfpm -v /PATH/TO/SOCKETDIR:/var/run/phpfpm -v /PATH/TO/APPDIR:/opt/applications/APP_NAME leoditommaso/php-fpm:latest
+docker run -d -v /PATH/TO/LOGDIR:/var/log/phpfpm -v /PATH/TO/SOCKETDIR:/var/run/phpfpm -v /PATH/TO/APPDIR:/opt/applications leoditommaso/php-fpm:latest
 ```
 
 Where:
