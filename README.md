@@ -39,5 +39,5 @@ www_php-fpm.socket
 
 This project is released under MIT License.
 
-Author:: [Leandro Di Tommaso](http://leoditommaso.io)
-<leandro.ditommaso@mikroways.net>
+Author:: [Leandro Di Tommaso](http://leoditommaso.io) 
+(<leandro.ditommaso@mikroways.net>)
