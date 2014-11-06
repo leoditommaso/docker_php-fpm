@@ -23,26 +23,25 @@ docker run -d -v /PATH/TO/LOGDIR:/var/log/phpfpm -v /PATH/TO/SOCKETDIR:/var/run/
 
 Where:
 
-* /PATH/TO/LOGDIR: is the full path to a local folder on the host machine
+* **/PATH/TO/LOGDIR**: is the full path to a local folder on the host machine
   where logs will be stored.
-* /PATH/TO/SOCKETDIR: is the full path to a local folder on the host machine
+* **/PATH/TO/SOCKETDIR**: is the full path to a local folder on the host machine
   where the socket will be placed. With this you could then configure an Nginx
   virtual host and set it to read from this socket. The socket will be named
-  after the application.
-* /PATH/TO/APPDIR: is the full path to a local folder on the host machine where
+  after the application (www_php5-fpm.sock by default).
+* **/PATH/TO/APPDIR**: is the full path to a local folder on the host machine where
   the website public files are stored.
-* APP_NAME is the one specified in the Dockerfile (www by default).
 
 # Building
 
 If you need to customize some setting you should clone this repo, change the appropiate
 file and then build the container. It's important to know the meaning of each file then:
 
-* Dockerfile: this is the docker configuration file to build the container from. Take a
+* **Dockerfile**: this is the docker configuration file to build the container from. Take a
   look at the comments on the file for an explanation of each line meaning.
-* supervisord.conf: the configuration file for supervisord. It tells the daemon to start
+* **supervisord.conf**: the configuration file for supervisord. It tells the daemon to start
   PHP-FPM.
-* www.conf: this is PHP-FPM pool configuration file. You could introduce any configuration
+* **www.conf**: this is PHP-FPM pool configuration file. You could introduce any configuration
   you need but keep **pool_name**, **app_user** and **app_group** the way they are
   'cause those strings are replaced with the appropiate values in the Dockerfile.
 
