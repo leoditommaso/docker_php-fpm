@@ -33,6 +33,9 @@ RUN sed -i "s/pool_name/$APP_NAME/g" /etc/php5/fpm/pool.d/www.conf
 RUN sed -i "s/app_user/$APP_USER/g" /etc/php5/fpm/pool.d/www.conf
 RUN sed -i "s/app_group/$APP_GROUP/g" /etc/php5/fpm/pool.d/www.conf
 
+# Change the default error log location.
+RUN sed -i "s@error_log = /var/log/php5-fpm.log@error_log = /var/log/phpfpm/php5-fpm.error.log@g" /etc/php5/fpm/php-fpm.conf
+
 # Add supervisord to make sure service restarts if something fails.
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 CMD supervisord -c /etc/supervisor/conf.d/supervisord.conf
