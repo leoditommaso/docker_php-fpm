@@ -14,17 +14,17 @@ docker build -t newcontainername .
 
 To run the container you could simply execute:
 
-´´´
+```
 docker run leoditommaso/php-fpm
-´´´
+```
 
 That will be useless because you will have a PHP-FPM running with
 no application configured and with no possibility to connect to a
 webserver. So, the best way to run the container is:
 
-´´´
+```
 docker run -d -v /PATH/TO/LOGDIR:/var/log/phpfpm -v /PATH/TO/SOCKETDIR:/var/run/phpfpm -v /PATH/TO/APPDIR:/opt/applications/APP_NAME
-´´´
+```
 
 Where APP_NAME is the one specified in the Dockerfile (www by default).
 
