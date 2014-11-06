@@ -1,7 +1,7 @@
 FROM ubuntu:14.04
 MAINTAINER Leandro Di Tommaso <leandro.ditommaso@mikroways.net>
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y i--force-yes \
+RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y --force-yes \
   supervisor php5-fpm php5-gd php5-imagick php5-curl php5-mcrypt php5-json \
   php5-mysqlnd
 
