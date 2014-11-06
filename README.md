@@ -1,16 +1,11 @@
 # docker_php-fpm
 
-Docker automated PHP-FPM installation based on Ubuntu 14.04.
-
-# Building
-
-If you would like to build the container, just clone this repo and then execute:
-
-```
-docker build -t newcontainername .
-```
+Docker container automated PHP-FPM installation.
 
 # Usage
+
+This container is on the Docker Hub so you do not need to clone this repo
+to use it unless you'd like to build a new container based on this one.
 
 To run the container you could simply execute:
 
@@ -18,21 +13,43 @@ To run the container you could simply execute:
 docker run leoditommaso/php-fpm
 ```
 
-That will be useless because you will have a PHP-FPM running with
-no application configured and with no possibility to connect to a
-webserver. So, the best way to run the container is:
+Anyway, that will be useless because you will have a PHP-FPM running with
+no application configured and with no connection to a webserver. So, the 
+best way to run the container is:
 
 ```
-docker run -d -v /PATH/TO/LOGDIR:/var/log/phpfpm -v /PATH/TO/SOCKETDIR:/var/run/phpfpm -v /PATH/TO/APPDIR:/opt/applications/APP_NAME
+docker run -d -v /PATH/TO/LOGDIR:/var/log/phpfpm -v /PATH/TO/SOCKETDIR:/var/run/phpfpm -v /PATH/TO/APPDIR:/opt/applications/APP_NAME leoditommaso/php-fpm:latest
 ```
 
-Where APP_NAME is the one specified in the Dockerfile (www by default).
+Where:
 
-By default, the container will create a socket placed in the /PATH/TO/SOCKETDIR directory
-and named after the application name which will be:
+* /PATH/TO/LOGDIR: is the full path to a local folder on the host machine
+  where logs will be stored.
+* /PATH/TO/SOCKETDIR: is the full path to a local folder on the host machine
+  where the socket will be placed. With this you could then configure an Nginx
+  virtual host and set it to read from this socket. The socket will be named
+  after the application.
+* /PATH/TO/APPDIR: is the full path to a local folder on the host machine where
+  the website public files are stored.
+* APP_NAME is the one specified in the Dockerfile (www by default).
+
+# Building
+
+If you need to customize some setting you should clone this repo, change the appropiate
+file and then build the container. It's important to know the meaning of each file then:
+
+* Dockerfile: this is the docker configuration file to build the container from. Take a
+  look at the comments on the file for an explanation of each line meaning.
+* supervisord.conf: the configuration file for supervisord. It tells the daemon to start
+  PHP-FPM.
+* www.conf: this is PHP-FPM pool configuration file. You could introduce any configuration
+  you need but keep **pool_name**, **app_user** and **app_group** the way they are
+  'cause those strings are replaced with the appropiate values in the Dockerfile.
+
+After making any customization you need execute:
 
 ```
-www_php-fpm.socket
+docker build -t newcontainername .
 ```
 
 # License and Authors
