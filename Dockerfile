@@ -12,6 +12,8 @@ ENV APP_GROUP   www-data
 
 # Create directory for the application
 RUN mkdir -p /opt/applications/$APP_NAME
+RUN mkdir -p /var/log/phpfpm
+RUN mkdir -p /var/run/phpfpm
 
 # php.ini customizations
 RUN sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 10M/g" /etc/php5/fpm/php.ini
