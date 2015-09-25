@@ -1,4 +1,6 @@
-# docker_php-fpm
+# PHP FPM Docker
+
+*MASTER VERSION IS IN DEVELOPMENT STATUS, DO USE TAGGED VERSIONS INSTEAD.*
 
 Docker container automated PHP-FPM installation.
 
